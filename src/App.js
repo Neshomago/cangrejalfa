@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import LoginForm from './components/loginForm';
 
 function App() {
   const [data, setData] = React.useState(null);
@@ -11,28 +12,12 @@ function App() {
     .then(data => setData(data.message));
   }, []);
 
+  //<header className="App-header">
+  //      <img src={logo} className="App-logo" alt="logo" />
   return (
-/*     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div> */
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+    <LoginForm></LoginForm>     
         <p>{ !data ? "Loading..." : data }</p>
-      </header>
     </div>
   );
 }
