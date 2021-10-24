@@ -1,7 +1,10 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import LoginForm from './components/loginForm';
+import Header from "./components/header";
+import Sidebar from './components/sidebar/sidebar';
+import Footer from './components/footer';
+import Dashboard from './components/dashboard';
+import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 
 function App() {
   const [data, setData] = React.useState(null);
@@ -12,13 +15,17 @@ function App() {
     .then(data => setData(data.message));
   }, []);
 
-  //<header className="App-header">
-  //      <img src={logo} className="App-logo" alt="logo" />
   return (
-    <div className="App">
-    <LoginForm></LoginForm>     
-        <p>{ !data ? "Loading..." : data }</p>
-    </div>
+    <Router>
+      <Switch>
+        <div>
+          <Header/>
+          <Sidebar/>
+          <Route path="/dashboard" component={Dashboard} />
+          <Footer/>
+        </div>
+      </Switch>
+    </Router>
   );
 }
 
