@@ -5,6 +5,7 @@ import Sidebar from './components/sidebar/sidebar';
 import Footer from './components/footer';
 import Dashboard from './components/dashboard';
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
+import Register from './components/register/register';
 
 function App() {
   //const [data, setData] = React.useState(null);
@@ -22,6 +23,7 @@ function App() {
           <Header/>
           <Sidebar/>
           <Route path="/dashboard" component={Dashboard} />
+          <Route path="/register" component={Register} />
           <Footer/>
         </div>
       </Switch>
