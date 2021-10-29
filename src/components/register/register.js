@@ -2,7 +2,23 @@ import React, { Component } from "react";
 import { Formik } from "formik";
 import * as Yup from "yup";
 
+const SignupSchema = Yup.object().shape({
+  username: Yup.string()
+    .min(2, "username is Too Short!")
+    .max(50, "username is Too Long!")
+    .required("username is Required"),
+  email: Yup.string()
+    .email("Invalid email")
+    .required("Email is Required"),
+  password: Yup.string().required("Password is required"),
+  confirm_password: Yup.string().oneOf(
+    [Yup.ref("password"), null],
+    "Both password need to be the same"
+  )
+});
+
 class Register extends Component {
+  
 showForm = ({
   values,
   errors,
@@ -20,8 +36,13 @@ showForm = ({
           name="username"
           onChange={handleChange}
           value={values.username}
-          className="form-control"
+          //className="form-control"
           placeholder="Username"
+          className={
+              errors.username && touched.username
+                ? "form-control is-invalid"
+                : "form-control"
+            }
           />
         </div>
         <div className="form-group has-feedback">
@@ -67,6 +88,7 @@ showForm = ({
 
   render() {
     return(
+    <div className="register-page">
       <div className="register-box">
         <div className="register-logo">
           <a href="../../index2.html">
@@ -84,12 +106,14 @@ showForm = ({
                 password:"",
                 confirm_password:""
               }}
-              onSubmit={(values) => {
+              onSubmit={(values, { setSubmitting }) => {
                 console.log(values);
-              }}>
-              {props => this.showForm(props)}
+                setSubmitting(false);
+              }}
+              validationSchema={SignupSchema}>
+              {(props) => this.showForm(props)}
             </Formik>
-
+            </div>
           </div>
         </div>
       </div>
