@@ -22,7 +22,7 @@ const SignupSchema = Yup.object().shape({
 class Register extends Component {
   submitForm = (values, history) => {
     axios
-      .post("http://localhost:8000/register", values)
+      .post("http://localhost:8080/register", values)
       .then(response => {
         console.log(response.data.result);
         if (response.data.result === "exito") {

@@ -8,13 +8,6 @@ import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-d
 import Register from './components/register/register';
 
 function App() {
-  //const [data, setData] = React.useState(null);
-
-  /* React.useEffect(() => {
-    fetch("/get")
-    .then(res => res.json())
-    .then(data => setData(data.message));
-  }, []); */
 
   return (
     <Router>
