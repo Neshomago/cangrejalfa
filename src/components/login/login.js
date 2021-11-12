@@ -4,23 +4,17 @@ import * as Yup from "yup";
 import axios from "axios";
 import swal from "sweetalert";
 
-const SignupSchema = Yup.object().shape({
+const LoginSchema = Yup.object().shape({
   username: Yup.string()
     .min(2, "username is Too Short!")
     .max(50, "username is Too Long!")
     .required("username is Required"),
-  email: Yup.string()
-    .email("Invalid email")
-    .required("Email is Required"),
   password: Yup.string().required("Password is required"),
-  confirm_password: Yup.string().oneOf(
-    [Yup.ref("password"), null],
-    "Both password need to be the same"
-  )
 });
 
 class Login extends Component {
   submitForm = (values, history) => {
+    console.log(values);
     axios
       .post("http://localhost:8080/login", values)
       .then(response => {
@@ -39,7 +33,7 @@ class Login extends Component {
         console.log(error);
         swal("Error!", "Something went wrong", "error");
       });
-  };
+  };  
   showForm = ({
       values,
       errors,
@@ -52,25 +46,30 @@ class Login extends Component {
       return(
         <form onSubmit={handleSubmit}>
     
-        <div className="form-group has-feedback">
+        <div className="form-group input-group has-feedback">
           <input
             type="text"
-            name="email"
+            name="username"
             onChange={handleChange}
-            value={values.email}
+            value={values.username}
             className="form-control"
-            placeholder="Email"
+            placeholder="Username"
             className={
-              errors.email && touched.email ? "form-control is-invalid" : "form-control"
+              errors.username && touched.username ? "form-control is-invalid" : "form-control"
             }
           />
-          {errors.email && touched.email ? (
+          <div className="input-group-append">
+            <div className="input-group-text">
+              <span className="fas fa-user"></span>
+            </div>
+          </div>
+          {errors.username && touched.username ? (
               <small id="passwordHelp" class="text-danger">
-              {errors.email}
+              {errors.username}
               </small>
             ) : null}
         </div>
-        <div className="form-group has-feedback">
+        <div className="form-group input-group mb-3 has-feedback">
           <input
             type="password"
             name="password"
@@ -82,6 +81,11 @@ class Login extends Component {
               errors.password && touched.password ? "form-control is-invalid" : "form-control"
             }
           />
+          <div className="input-group-append">
+            <div className="input-group-text">
+              <span className="fas fa-lock"></span>
+            </div>
+          </div>
           {errors.password && touched.password ? (
               <small id="passwordHelp" class="text-danger">
               {errors.password}
@@ -89,14 +93,20 @@ class Login extends Component {
             ) : null}
         </div>
        
-        <div className="row">
-          <div className="col-md-12">
+        <div class="row">
+          <div class="col-8">
+            <div class="icheck-primary">
+              <input type="checkbox" id="remember" />
+              <label for="remember">Remember Me</label>
+            </div>
+          </div>
+          <div class="col-4">
             <button
-              disabled={isSubmitting}
               type="submit"
-              className="btn btn-primary btn-block btn-flat"
+              disabled={isSubmitting}
+              class="btn btn-primary btn-block"
             >
-              Confirm
+              Sign In
             </button>
           </div>
         </div>
@@ -125,7 +135,7 @@ class Login extends Component {
                 console.log(values);
                 setSubmitting(false);
               }}
-              validationSchema={SignupSchema}
+              validationSchema={LoginSchema}
             >
               {props => this.showForm(props)}
             </Formik>

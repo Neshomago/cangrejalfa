@@ -6,6 +6,7 @@ import Footer from './components/footer';
 import Dashboard from './components/dashboard';
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 import Register from './components/register/register';
+import Login from './components/login/login';
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
           <Sidebar/>
           <Route path="/dashboard" component={Dashboard} />
           <Route path="/register" component={Register} />
+          <Route path="/login" component={Login} />
           <Footer/>
         </div>
       </Switch>
