@@ -123,7 +123,7 @@ class Login extends Component {
         </div>
         <div className="card">
           <div className="card-body register-card-body">
-            <p className="login-box-msg">Register a new membership</p>
+            <p className="login-box-msg">Login to the POS membership</p>
  
             <Formik
               initialValues={{
