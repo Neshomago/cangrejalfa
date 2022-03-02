@@ -7,6 +7,9 @@ import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-d
 import Register from './components/register/register';
 import Login from './components/login/login';
 import Neworder from './components/neworder/neworder';
+import Menu from './components/menu/menu';
+
+import "primeflex/primeflex.css";
 
 
 
@@ -24,11 +27,12 @@ function App() {
         <div>
           <Header/>
           {/* <Sidebar/> */}
-          <Dashboard />
-          {/* <Route path="/dashboard" component={Dashboard} /> */}
+          {/* <Dashboard /> */}
+          <Route path="/dashboard" component={Dashboard} />
           <Route path="/register" component={Register} />
           <Route path="/login" component={Login} />
           <Route path="/neworder" component={Neworder} />
+          <Route path="/menu" component={Menu} />
           <Footer/>
         </div>
       </Switch>

@@ -1,29 +1,22 @@
 import React, { Component } from "react";
+import { Card } from 'primereact/card';
+import { Button } from 'primereact/button';
+import Menu from '../menu/menu';
 
 class Neworder extends Component {
   render() {
+    const footer = <span>
+    <Button label="Save" icon="pi pi-check" style={{marginRight: '.25em'}}/>
+    <Button label="Cancel" icon="pi pi-times" className="p-button-secondary"/>
+</span>;
+
     return (
         <div className="grid">
-          <div className="grid-item">
-            <div className="card">
-              <div className="card-header">
-                <h3>New Order</h3>
-                <div className="card-header-actions">
-                <button className="btn btn-primary">OK</button>
-                </div>
-              </div>
-            </div>
-
-            <div className="card">
-              <div className="card-header">
-                <h3>New Order</h3>
-                <div className="card-header-actions">
-                <button className="btn btn-primary">OK</button>
-                </div>
-              </div>
-            </div>
-            
-          </div>
+        <Card>
+          <menu></menu>
+        </Card>
+          <Card title="New Order" subTitle="Ver todas las ordenes" footer={footer}>
+          </Card>
         </div>
     );
   }

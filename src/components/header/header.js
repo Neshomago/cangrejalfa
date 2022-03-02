@@ -13,19 +13,12 @@ const Header = () => {
             {
                 label: 'Nueva Orden',
                 icon: 'pi pi-fw pi-plus',
-                items: [
-                    {
-                        label: 'Bookmark',
-                        icon: 'pi pi-fw pi-bookmark'
-                    },
-                    {
-                        label: 'Video',
-                        icon: 'pi pi-fw pi-video'
-                    },
-
-                ]
             }
         ]
+    },
+    {
+      label: 'Menu',
+        icon: 'pi pi-fw pi-file',
     }
   ];
 
