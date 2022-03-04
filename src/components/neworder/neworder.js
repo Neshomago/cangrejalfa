@@ -13,7 +13,7 @@ class Neworder extends Component {
     return (
         <div className="grid">
         <Card>
-          <menu></menu>
+          <Menu></Menu>
         </Card>
           <Card title="New Order" subTitle="Ver todas las ordenes" footer={footer}>
           </Card>

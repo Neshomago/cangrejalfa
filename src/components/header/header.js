@@ -13,12 +13,14 @@ const Header = () => {
             {
                 label: 'Nueva Orden',
                 icon: 'pi pi-fw pi-plus',
+                url: '/neworder',
             }
         ]
     },
     {
       label: 'Menu',
         icon: 'pi pi-fw pi-file',
+        url: '/menu',
     }
   ];
 
