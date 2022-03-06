@@ -4,8 +4,8 @@ import { Card } from 'primereact/card';
 class Menu extends Component {
   render() {
     const platos = [
-      {id: 1, nombre: 'Promo 6', precio: '15.00', cantidad:1, tipo:'Cangrejos'},
-      {id: 2, nombre: 'Encocados', precio: '16.00', cantidad:1, tipo:'Cangrejos'},
+      {id: 1, nombre: 'Promo 6', precio: '15.00', cantidad:1, tipo:'Cangrejos', image_url:'../assets/criollos.jpg'},
+      {id: 2, nombre: 'Encocados', precio: '16.00', cantidad:1, tipo:'Cangrejos',image_url:'./assets/encocadoscangrejo.jpg'},
       {id: 3, nombre: 'Al Ajillo', precio: '17.00', cantidad:1, tipo:'Cangrejos'},
       {id: 4, nombre: 'Ensalada', precio: '12.00', cantidad:1, tipo:'Cangrejos'},
       {id: 5, nombre: 'Penalti', precio: '7.00', cantidad:1, tipo:'Cangrejos'},
@@ -22,15 +22,23 @@ class Menu extends Component {
     ]
 
     return (
-      <div className="card-width">
-      <h1>Menu</h1>
-      {platos.map(plato => (
-        <Card title={plato.nombre} subTitle={plato.tipo}>
-          <img src={'https://picsum.photos/200/300'} alt="Card image" />
-          <p>Precio: {plato.precio}</p>
-          <p>Cantidad: {plato.cantidad}</p>
-        </Card>
-      ))}
+
+      <div>
+        <div className="grid">
+          <div className="col-12">
+            <h1>Menu</h1>
+          </div>
+            {platos.map(plato => (
+            <div className="col-2">
+              <Card title={plato.nombre} subTitle={plato.tipo} className="cursor-pointer shadow-5" onClick={this.addItem}>
+                <img src={plato.image_url} alt="Card image" />
+                <p>Precio: {plato.precio}</p>
+                <p>Cantidad: {plato.cantidad}</p>
+              </Card>
+            </div>
+            ))
+            }
+          </div>
       </div>
     )
   }
