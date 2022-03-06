@@ -31,11 +31,15 @@ class Neworder extends Component {
     }
   }
   
+
   render() {
-    const footer =  <span>
-                      <Button label="Save" icon="pi pi-check" style={{marginRight: '.25em'}}/>
-                      <Button label="Cancel" icon="pi pi-times" className="p-button-secondary"/>
-                    </span>;
+    const footer =  <div>
+                      <Button label="Pagar factura" icon="pi pi-check" className="p-button-rounded p-button-warning col-12"/>
+                    </div>;
+
+    const head =  <div>
+                  <Button label="Borrar todo" icon="pi pi-trash" className="p-button-rounded p-button-danger col"/>
+                  </div>;
 
     return (
         <div className="grid">
@@ -43,9 +47,51 @@ class Neworder extends Component {
             <Menu />
           </div>
           <div className="col-4">
-            <Card title="New Order" subTitle="Ver todas las ordenes" footer={footer}>
-            nombreProducto
-              <Button label="+"/> Número <Button label="-"/>
+            <Card title="Nueva Orden" subTitle="Ver todas las ordenes" footer={footer}>
+            
+            <div className="grid">
+              <div className="col">nombreProducto</div>
+              <div className="col">
+                <Button className="p-button-sm" label="-"/> 10 <Button className="p-button-sm" label="+"/>
+              </div>
+              <div className="col">$ 13.50</div>
+            </div>
+
+            <div className="grid">
+              <div className="col">nombreProducto</div>
+              <div className="col">
+                <Button className="p-button-sm" label="-"/> 10 <Button className="p-button-sm" label="+"/>
+              </div>
+              <div className="col">$ 13.50</div>
+            </div>
+
+            <div className="grid">
+              <div className="col">nombreProducto</div>
+              <div className="col">
+                <Button className="p-button-sm" label="-"/> 10 <Button className="p-button-sm" label="+"/>
+              </div>
+              <div className="col">$ 13.50</div>
+            </div>
+            
+            <Card>
+              <div>
+                <h3>
+                  Subtotal
+                </h3>
+              </div>
+              <div>
+                <h3>
+                IVA
+                </h3>
+              </div>
+              <div>
+                <h2>
+                TOTAL
+                </h2>
+              </div>
+            </Card>
+
+            {head}
             </Card>
           </div>
         </div>
